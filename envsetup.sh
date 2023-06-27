@@ -1,5 +1,6 @@
 umask 022
 alias which='command -v'
+export OFFICIAL_BUILD=true
 source build/envsetup.sh
 
 export LANG=C.UTF-8
