@@ -11,7 +11,12 @@ source "$(dirname ${BASH_SOURCE[0]})/common.sh"
 chrt -b -p 0 $$
 
 PERSISTENT_KEY_DIR=keys/$1
-RELEASE_OUT=${OUT_DIR:-out}/release-$1-$BUILD_NUMBER
+
+cd ./packages/apps/ethOSWallpaper
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+cd -
+
+RELEASE_OUT=${OUT_DIR:-out}/release-$1-$BUILD_NUMBER-$BRANCH_NAME
 
 # decrypt keys in advance for improved performance and modern algorithm support
 KEY_DIR=$(mktemp -d /dev/shm/release_keys.XXXXXXXXXX)
